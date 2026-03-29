@@ -180,10 +180,15 @@
         e.preventDefault();
 
         const email = document.getElementById("email").value;
-        const allowedDomain = "@gmail.com"; // change if needed
 
-        if (!email.endsWith(allowedDomain)) {
-            alert("Please use email with domain " + allowedDomain);
+        const allowedDomains = ["@gmail.com", "@yahoo.com", "@outlook.com", "@hotmail.com"];
+
+        const isValid = allowedDomains.some(function(domain) {
+            return email.endsWith(domain);
+        });
+
+        if (!isValid) {
+            alert("Please use a valid email (Gmail, Yahoo, Outlook, etc.)");
             return;
         }
 
